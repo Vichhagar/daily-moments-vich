@@ -2,7 +2,7 @@ import {
   IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,
 } from '@ionic/react';
 import { home, settings, arrowRedo, arrowUndo, person } from 'ionicons/icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
@@ -12,6 +12,8 @@ import Entry from './pages/Entry';
 import Login from './pages/Login'
 
 const App: React.FC = () => {
+  const [loggedin, setLoggedin] = useState(false);
+  console.log(`Status: ${loggedin}`)
   return (
     <IonApp>
       <IonReactRouter>
@@ -21,7 +23,10 @@ const App: React.FC = () => {
             <Redirect to="/entries"/>
             </Route>
             <Route exact path="/entries">
-              <Home/>
+              {loggedin ?
+                <Home/>:
+                <Redirect to="/login"/>
+              }
             </Route>
             <Route exact path="/entries/:id">
               <Entry/>
@@ -30,7 +35,9 @@ const App: React.FC = () => {
               <Setting/>
             </Route>
             <Route exact path="/login">
-              <Login/>
+              <Login loggedIn = {loggedin}
+                onLogin = {() => setLoggedin(true)}
+              />
             </Route>
             </IonRouterOutlet>
           <IonTabBar slot="bottom">

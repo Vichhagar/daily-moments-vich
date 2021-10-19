@@ -7,8 +7,17 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
+import { Redirect } from 'react-router';
 
-const Login: React.FC = () => {
+interface Props {
+  loggedIn: boolean;
+  onLogin: () => void;
+}
+
+const Login: React.FC<Props> = ({loggedIn, onLogin}) => {
+  if(loggedIn) {
+    return <Redirect to = "/entries"/>
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -17,7 +26,7 @@ const Login: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonButton expand="full">Log In</IonButton>
+        <IonButton expand="full" onClick={onLogin}>Log In</IonButton>
       </IonContent>
     </IonPage>
   );
