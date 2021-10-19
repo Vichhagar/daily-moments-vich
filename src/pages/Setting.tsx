@@ -6,7 +6,6 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Setting: React.FC = () => {
   return (
