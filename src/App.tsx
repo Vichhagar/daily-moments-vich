@@ -7,10 +7,9 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Setting from './pages/Setting';
-import Page1 from './pages/Page1';
-import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
 import Entry from './pages/Entry';
+import Login from './pages/Login'
 
 const App: React.FC = () => {
   return (
@@ -30,14 +29,8 @@ const App: React.FC = () => {
             <Route exact path="/setting">
               <Setting/>
             </Route>
-            <Route exact path="/page1">
-              <Page1/>
-            </Route>
-            <Route exact path="/page2">
-              <Page2/>
-            </Route>
-            <Route exact path="/page3">
-              <Page3/>
+            <Route exact path="/login">
+              <Login/>
             </Route>
             </IonRouterOutlet>
           <IonTabBar slot="bottom">
