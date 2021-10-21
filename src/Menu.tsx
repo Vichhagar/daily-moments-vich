@@ -1,5 +1,5 @@
 import {
-  IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,
+  IonApp, IonIcon, IonLabel, IonPage, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,
 } from '@ionic/react';
 import { home, settings } from 'ionicons/icons';
 import React from 'react';
@@ -11,7 +11,7 @@ import Entry from './pages/Entry';
 
 const Menu: React.FC = () => {
   return (
-    <IonApp>
+    <IonPage>
       <IonReactRouter>
         <IonTabs>
             <IonRouterOutlet>
@@ -37,7 +37,7 @@ const Menu: React.FC = () => {
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>
-    </IonApp>
+    </IonPage>
   );
 };
 
