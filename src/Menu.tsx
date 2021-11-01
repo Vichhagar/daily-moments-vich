@@ -3,34 +3,41 @@ import {
 } from '@ionic/react';
 import { home, settings } from 'ionicons/icons';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Setting from './pages/Setting';
 import Entry from './pages/Entry';
 
-const Menu: React.FC = () => {
+interface Props {
+  uloggedIn: boolean;
+}
+
+const Menu: React.FC<Props> = ({uloggedIn}) => {
+  if(!uloggedIn) {
+    return <Redirect to="/login"/>
+  }
   return (
     <IonPage>
       <IonReactRouter>
         <IonTabs>
             <IonRouterOutlet>
-            <Route exact path="/entries">
+            <Route exact path="/my/entries">
                 <Home/>
             </Route>
-            <Route exact path="/entries/:id">
+            <Route exact path="/my/entries/:id">
               <Entry/>
             </Route>
-            <Route exact path="/setting">
+            <Route exact path="/my/setting">
               <Setting/>
             </Route>
             </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="entries" href="/entries">
+            <IonTabButton tab="entries" href="/my/entries">
               <IonIcon icon={home}/>
               <IonLabel>Home</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="setting" href="/setting">
+            <IonTabButton tab="setting" href="/my/setting">
               <IonIcon icon={settings}/>
               <IonLabel>Setting</IonLabel>
             </IonTabButton>
