@@ -6,21 +6,20 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const Page2: React.FC = () => {
+const NotFound: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Page2</IonTitle>
+          <IonTitle>Not Found</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        This is Page Number Two.
+        Error 404 Page Not Found
       </IonContent>
     </IonPage>
   );
 };
 
-export default Page2;
+export default NotFound;
