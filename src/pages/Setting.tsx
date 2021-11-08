@@ -4,10 +4,16 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonButton,
 } from '@ionic/react';
 import React from 'react';
+import { auth } from '../Firestore';
+import { Redirect } from 'react-router-dom';
 
 const Setting: React.FC = () => {
+  const handleLogout = () => {
+    auth.signOut();
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -16,7 +22,7 @@ const Setting: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        This is Setting Page.
+        <IonButton className="ion-padding" expand="block" onClick={handleLogout}>Logout</IonButton>
       </IonContent>
     </IonPage>
   );
